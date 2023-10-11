@@ -22,5 +22,12 @@ Serein AL-Ratrout
 
 # Technologies Used:
 ReactJS
+
 other things (add them later)
+
+# HOW TO USE(for the goobers on my team)
+1. create empty folder somewhere
+2. open folder in some command line
+3. git clone "link to repo"
+4. you can view changes in the code live by running "npm start" in the directory Imagehuntr/imagehuntr
 
