@@ -20,3 +20,7 @@ Grant Willison	Developer
 Instructor: 	
 Serein AL-Ratrout 
 
+# Technologies Used:
+ReactJS
+other things (add them later)
+
