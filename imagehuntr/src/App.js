@@ -6,7 +6,7 @@ function App() {
       <header className="App-header">
         <img src={'../images/lolgetblocked.jpg'} className="App-logo" alt="logo" />
         <p>
-          We're gonna make a cool thing guys
+          We're gonna make a cool thing fellas
         </p>
       </header>
     </div>
