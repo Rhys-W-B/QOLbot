@@ -22,5 +22,13 @@ Serein AL-Ratrout
 
 # Technologies Used:
 ReactJS
+
 other things (add them later)
+
+# HOW TO USE(for the goobers on my team)
+1. create empty folder somewhere
+2. open folder in some command line
+3. make a new react app by running "npx create-react-app <project-name>" in terminal
+4. git clone ["link to repo"](https://github.com/Rhys-W-B/ImageHuntr) into the created directory.
+5. you can view changes in the code live by running "npm start" in the directory Imagehuntr/imagehuntr
 
