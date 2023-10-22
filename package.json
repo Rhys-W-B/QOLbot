@@ -1,0 +1,22 @@
+{
+  "name": "qolbot",
+  "version": "1.0.0",
+  "description": "quality of life discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rhys-W-B/QOLbot.git"
+  },
+  "author": "RhysWB",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rhys-W-B/QOLbot/issues"
+  },
+  "homepage": "https://github.com/Rhys-W-B/QOLbot#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
