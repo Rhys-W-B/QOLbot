@@ -16,6 +16,5 @@ module.exports = {
         const myArr = string2.split("d");
         let x = parseInt(myArr[0])
         await interaction.editReply(""+x)
-        
     }
 }
