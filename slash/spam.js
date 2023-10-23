@@ -17,4 +17,5 @@ module.exports = {
         let x = parseInt(myArr[0])
         await interaction.editReply(""+x)
     }
+    //test comment
 }
