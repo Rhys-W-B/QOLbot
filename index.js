@@ -6,6 +6,7 @@ const fs = require("fs")
 
 dotenv.config()
 const TOKEN = process.env.DISCORD_TOKEN
+//changes made
 
 const client = new Client({
     intents: [
