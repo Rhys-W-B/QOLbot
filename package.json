@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Rhys-W-B/QOLbot#readme",
   "dependencies": {
+    "discord.js": "^14.13.0",
     "dotenv": "^16.3.1"
   }
 }
