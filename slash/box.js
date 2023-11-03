@@ -3,7 +3,7 @@ const {EmbedBuilder} = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("testInput")
+        .setName("box")
         .setDescription("tests the input functionality of discord bot commands. Does this by making a box of A x B size")
         .addStringOption((option) =>
             option
