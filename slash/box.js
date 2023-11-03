@@ -17,11 +17,13 @@ module.exports = {
         const myArr = string2.split("x");
         let length = parseInt(myArr[0])
         let width = parseInt(myArr[1])
+        let outputString = ""
         if(length >= Number.MAX_SAFE_INTEGER-1 || width >= Number.MAX_SAFE_INTEGER-1)
         {
             await interaction.editReply("Too big! imput a smaller number please");
         }
-        if(!Number.isInteger(x) || !Number.isInteger(amount))
+
+        if(!Number.isInteger(length) || !Number.isInteger(width))
         {
             await interaction.editReply("Incorrect input, please try again")
         }
@@ -31,10 +33,11 @@ module.exports = {
             {
                 for (let j = 0; i < length; i++) 
                 {
-                    await interaction.editReply("*");
+                    outputString = outputString.concat("*");
                 }
-                await interaction.editReply("\n");
+                outputString = outputString.concat("\n");
             }
+            await interaction.editReply(outputString);
         }
     }
 }
