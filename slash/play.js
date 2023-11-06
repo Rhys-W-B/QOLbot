@@ -1,6 +1,8 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
-const { MessageEmbed } = require("discord.js")
-const { QueryType } = require("discord-player")
+const { MessageEmbed, EmbedBuilder } = require("discord.js")
+const { QueryType, useMainPlayer } = require("discord-player")
+player = useMainPlayer()
+player.extractors.loadDefault()
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -23,7 +25,7 @@ module.exports = {
             const queue = await client.player.nodes.create(interaction.guild)
             if(!queue.connection) await queue.connect(interaction.member.voice.channel)
 
-            let embed = new MessageEmbed()
+            let embed = new EmbedBuilder()
 
             if(interaction.options.getSubcommand() === "song"){
                 let url = interaction.options.getString("url")
@@ -53,7 +55,7 @@ module.exports = {
                 {
                     return interaction.editReply("No results")
                 }
-                const playlsit = result.playlist[0]
+                const playlist = result.playlist[0]
                 await queue.addTracks(result.tracks)
                 embed
                     .setDescription(`**${result.tracks.length} songs from [${playlist.title}](${playlist.url})** has been added to the Queue`)

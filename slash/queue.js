@@ -8,7 +8,7 @@ module.exports = {
         .addNumberOption((option) => option.setName("page").setDescription("page number of the queue").setMinValue(1)),
 
     run: async({ client, interaction }) => {
-        const queue = client.player.getQueue(interacion,guildId)
+        const queue = client.player.getQueue(interaction.guildId)
         if(!queue || !queue.playing)
         {
             return await interaction.editReply("There are no songs in the queue")

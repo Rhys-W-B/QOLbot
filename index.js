@@ -4,6 +4,7 @@ const {REST} = require("@discordjs/rest")
 const {Routes} = require("discord-api-types/v9")
 const fs = require("fs")
 const {Player} = require("discord-player")
+const {YouTubeExtractor} = require("@discord-player/extractor")
 
 dotenv.config()
 const TOKEN = process.env.DISCORD_TOKEN
@@ -25,12 +26,18 @@ const Client_ID = "1165749058363736084"
 const GUILD_ID = "1165758133524770917" //ID for server it will be running in
 
 client.slashcommands = new Collection()
-client.player = new Player(client, {
+const player = new Player(client, {
     ytdlOptions: {
         quality: "highestaudio",
         highWaterMark: 1 << 25
     }
 })
+/*client.player = new Player(client, {
+    ytdlOptions: {
+        quality: "highestaudio",
+        highWaterMark: 1 << 25
+    }
+})*/
 
 let commands = []
 
