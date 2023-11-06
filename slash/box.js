@@ -35,9 +35,10 @@ module.exports = {
                 {
                     outputString = outputString.concat("*");
                 }
-                outputString = outputString.concat("\n");
+                outputString = outputString.concat('\n');
             }
-            await interaction.editReply(outputString);
+            await interaction.editReply("Creating a" + length + "x" + width + " box:");
+            await interaction.channel.send(outputString);
         }
     }
 }
