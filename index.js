@@ -26,6 +26,7 @@ const Client_ID = "1165749058363736084"
 const GUILD_ID = "1165758133524770917" //ID for server it will be running in
 
 client.slashcommands = new Collection()
+
 const player = new Player(client, {
     ytdlOptions: {
         quality: "highestaudio",
@@ -76,7 +77,7 @@ else{
             const slashcmd = client.slashcommands.get(interaction.commandName)
             if(!slashcmd) {interaction.reply("Not a valid slash command")} 
 
-            await interaction.deferReply()
+            await interaction.deferReply() //Music Bot doesn't like when interaction has already replied for some reason
             await slashcmd.run({client,interaction})
         }
         handleCommand()
@@ -85,12 +86,6 @@ else{
 
 client.on(`ready`,() => {
     console.log(`bot ready!`)
-})
-
-client.on(`messageCreate`, message =>{
-    
-    //we can deal with messages here
-    
 })
 
 client.login(TOKEN)

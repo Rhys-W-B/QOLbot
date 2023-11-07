@@ -1,5 +1,8 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
+const { useMainPlayer, GuildNodeManager } = require("discord-player")
 const { MessageEmbed } = require("discord.js")
+player = useMainPlayer()
+const manager = new GuildNodeManager(player)
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,7 +11,7 @@ module.exports = {
         .addNumberOption((option) => option.setName("page").setDescription("page number of the queue").setMinValue(1)),
 
     run: async({ client, interaction }) => {
-        const queue = client.player.getQueue(interaction.guildId)
+        const queue = manager.get(interaction.guildId)
         if(!queue || !queue.playing)
         {
             return await interaction.editReply("There are no songs in the queue")

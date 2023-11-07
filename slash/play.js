@@ -1,8 +1,9 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { MessageEmbed, EmbedBuilder } = require("discord.js")
 const { QueryType, useMainPlayer } = require("discord-player")
+const { YouTubeExtractor } = require("@discord-player/extractor")
 player = useMainPlayer()
-player.extractors.loadDefault()
+player.extractors.register(YouTubeExtractor)
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -22,21 +23,19 @@ module.exports = {
             if(!interaction.member.voice.channel)
                 return interaction.editReply("You need to be in a VC to use this command")
 
-            const queue = await client.player.nodes.create(interaction.guild)
+            const queue = await player.nodes.create(interaction.guild)
             if(!queue.connection) await queue.connect(interaction.member.voice.channel)
 
             let embed = new EmbedBuilder()
 
             if(interaction.options.getSubcommand() === "song"){
                 let url = interaction.options.getString("url")
-                const result = await client.player.search(url, {
+                console.log(url)
+                const result = await player.search(url, {
                     requestedBy: interaction.user,
                     searchEngine: QueryType.YOUTUBE_VIDEO
                 })
-                if(result.tracks.length === 0)
-                {
-                    return interaction.editReply("No results")
-                }
+
                 const song = result.tracks[0]
                 await queue.addTrack(song)
                 embed
@@ -61,6 +60,12 @@ module.exports = {
                     .setDescription(`**${result.tracks.length} songs from [${playlist.title}](${playlist.url})** has been added to the Queue`)
                     .setThumbnail(playlist.thumbnail)
             }
+            
+            if(!queue.playing) await queue.node.play()
+            console.log("playing")
+            interaction.reply({
+                embeds: [embed]
+            })
         }
 
 }
