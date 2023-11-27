@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/Rhys-W-B/QOLbot#readme",
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "@discord-player/extractor": "^4.4.5",
+    "discord-player": "^6.6.6",
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1",
+    "mediaplex": "^0.0.8",
+    "ytdl-core": "^4.11.5"
   }
 }
