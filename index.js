@@ -6,6 +6,7 @@ const fs = require("fs")
 
 dotenv.config()
 const TOKEN = process.env.DISCORD_TOKEN
+//changes made
 
 const client = new Client({
     intents: [
@@ -19,8 +20,8 @@ const client = new Client({
 //music bot stuff
 const LOAD_SLASH = process.argv[2] == "load"
 
-const Client_ID = "842408531684622357"
-const GUILD_ID = "901689120684929116" //ID for server it will be running in
+const Client_ID = "1165749058363736084"
+const GUILD_ID = "1165758133524770917" //ID for server it will be running in
 
 client.slashcommands = new Collection()
 
@@ -68,7 +69,6 @@ else{
     })
 }
 
-//nutting messages
 client.on(`ready`,() => {
     console.log(`bot ready!`)
 })
