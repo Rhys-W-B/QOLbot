@@ -16,15 +16,22 @@ module.exports = {
         option
             .setName("user")
             .setDescription("user to add to, ex: @user")
+            .setRequired(true))
+        .addStringOption((option) =>
+        option
+            .setName("number")
+            .setDescription("amount to add")
             .setRequired(true)),
+        
 
     run: async ({client, interaction}) => {
         const counter = interaction.options.getString("counter");
         const user = interaction.options.getString("user");
+        const num = interaction.options.getString("number");
         const connection = mysql.createConnection({
             host: 'localhost',
-            user: process.env.DB_USER,
-            password: process.env.DB_PASS,
+            user: "qolbot",
+            password: "qolbot",
             database: 'qolbot',
             rowsAsArray: true
         });
@@ -35,13 +42,13 @@ module.exports = {
             function(err, results, fields) {
                 if(results == undefined){
                     connection.execute(
-                        'insert into counter_data values(?,?,1)',
-                        [counter, user]
+                        'insert into counter_data values(?,?,?)',
+                        [counter, user, num]
                     );
                 }else{
                     connection.execute(
-                        'update counter_data set data = data + 1 where name = ? and user = ?',
-                        [counter, user]
+                        'update counter_data set data = data + ? where name = ? and user = ?',
+                        [num, counter, user]
                     );  
                 }
 

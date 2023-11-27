@@ -14,8 +14,8 @@ module.exports = {
 
         const connection = mysql.createConnection({
             host: 'localhost',
-            user: process.env.DB_USER,
-            password: process.env.DB_PASS,
+            user: "qolbot",
+            password: "qolbot",
             database: 'qolbot',
             rowsAsArray: true
         });
@@ -23,7 +23,7 @@ module.exports = {
         connection.execute(
             'select text, user from counter_data',
             function(err, results, fields) {
-                var output = string+"\"";
+                var output = string+"";
                 for (const row of results){
                     output += row[0]+": "+row[1]+"\n";
                 }
