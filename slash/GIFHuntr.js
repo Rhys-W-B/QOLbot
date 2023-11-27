@@ -4,7 +4,7 @@ const fetch = require("node-fetch")
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("gifhuntr")
+    .setName("gif_huntr")
     .setDescription("Retrieves and posts a random GIF (from a selection of 10) from a given search criteria")
     .addStringOption((option) =>
         option
