@@ -5,8 +5,8 @@ require("dotenv").config();
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("quote")
-        .setDescription("get a random saved quote"),
+        .setName("random_quote")
+        .setDescription("retrieve a random quote"),
 
     run: async ({client, interaction}) => {
         const message = interaction.options.getString("message");
@@ -21,14 +21,20 @@ module.exports = {
         });
 
         connection.execute(
-            'select text, user from counter_data',
+            'select * from quotes',
             function(err, results, fields) {
-                var output = string+"";
-                for (const row of results){
-                    output += row[0]+": "+row[1]+"\n";
+                if(results.length == 0){
+                    interaction.editReply("No quotes have been saved.");
+                }else{
+                    num = Math.floor(Math.random() * results.length);
+                    console.log(num);
+                    console.log(results);
+                    output = "\"" + results[num][1] + "\"\n-" + results[num][2];
+                    interaction.editReply(output);
                 }
-                interaction.editReply(output);
-            });  
+                
+            })
+            
         connection.end();
     }
 }

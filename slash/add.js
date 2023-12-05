@@ -35,33 +35,36 @@ module.exports = {
             database: 'qolbot',
             rowsAsArray: true
         });
+        try{
+            connection.execute(
+                'select data from counter_data where counter = ? and user = ?',
+                [counter, user],
+                function(err, results, fields) {
+                    if(results == undefined){
+                        connection.execute(
+                            'insert into counter_data values(?,?,?)',
+                            [counter, user, num]
+                        );
+                    }else{
+                        connection.execute(
+                            'update counter_data set data = data + ? where name = ? and user = ?',
+                            [num, counter, user]
+                        );  
+                    }
 
-        connection.execute(
-            'select data from counter_data where counter = ? and user = ?',
-            [counter, user],
-            function(err, results, fields) {
-                if(results == undefined){
                     connection.execute(
-                        'insert into counter_data values(?,?,?)',
-                        [counter, user, num]
-                    );
-                }else{
-                    connection.execute(
-                        'update counter_data set data = data + ? where name = ? and user = ?',
-                        [num, counter, user]
-                    );  
-                }
-
-                connection.execute(
                         'select data from counter_data where name = ? and user = ?',
                         [counter, user],
                         function(err, results, fields) {
                             interaction.editReply("Added "+counter+" to "+user+", their total is now "+results[0][0]);
                         }
                     );
-              connection.end();  
-            }
-          );
+                }
+            );  
+        }catch(error){
+            interaction.editReply("Invalid request.")
+        }
         
+        connection.end(); 
     }
 }
